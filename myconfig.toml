@@ -1,0 +1,32 @@
+[service.mvt]
+viewer = true
+
+[[datasource]]
+dbconn = "postgresql://openindoor-db-admin:admin123@openindoor-db:5432/openindoor-db"
+name = "dbconn"
+default = true
+
+[grid]
+predefined = "web_mercator"
+
+[[tileset]]
+name = "osm"
+attribution = "© OpenStreetMap contributors"
+extent = [2.535, 49.0095, 2.549, 49.0185]
+minzoom = 15
+maxzoom = 20
+
+[[tileset.layer]]
+name = "buildings"
+geometry_field = "wkb_geometry"
+table_name = "buildings"
+srid = 3857
+
+
+# datasource = "natural_earth"
+# table_name = "ne_10m_populated_places"
+
+[webserver]
+bind = "0.0.0.0"
+port = 6767
+

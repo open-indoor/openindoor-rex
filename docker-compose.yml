@@ -1,0 +1,15 @@
+version: "3.6"
+services:
+
+  openindoor-rex:
+    build:
+      context: .
+    image: sourcepole/t-rex
+    command: serve --openbrowser=false --config=myconfig.toml
+    volumes:
+    - ./myconfig.toml:/openindoor-rex/myconfig.toml
+    - ./test/in:/var/data/in:ro
+    - ./test/out:/var/data/out
+    ports:
+    - 6767:6767
+
