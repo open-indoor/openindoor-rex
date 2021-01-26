@@ -20,7 +20,7 @@ RUN curl -O -L \
 
 RUN mkdir -p /var/data/in
 WORKDIR /var/data/in
-COPY ./myconfig.toml /var/data/in/myconfig.toml
+COPY ./myconfig.toml /var/data/in/myconfig_tmpl.toml
 
 # VOLUME ["/var/data/in"]
 # VOLUME ["/var/data/out"]
@@ -29,6 +29,10 @@ EXPOSE 6767
 
 # ENTRYPOINT /bin/bash
 # CMD ls -al
-ENTRYPOINT ["/usr/local/bin/t_rex"]
-CMD serve --openbrowser=false --config=/var/data/in/myconfig.toml
+
+COPY ./openindoor-rex.sh /openindoor-rex/openindoor-rex
+CMD /openindoor-rex/openindoor-rex
+
+# ENTRYPOINT ["/usr/local/bin/t_rex"]
+# CMD /usr/local/bin/t_rex serve --openbrowser=false --config=myconfig.toml
 

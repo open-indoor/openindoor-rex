@@ -2,7 +2,7 @@
 viewer = true
 
 [[datasource]]
-dbconn = "postgresql://openindoor-db-admin:admin123@openindoor-db:5432/openindoor-db"
+dbconn = "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@openindoor-db:5432/${POSTGRES_DB}"
 name = "dbconn"
 default = true
 
